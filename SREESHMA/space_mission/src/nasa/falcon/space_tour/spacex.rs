@@ -1,3 +1,3 @@
-fn owner(){
+pub fn owner(){
     println!("elon mask");
 }
