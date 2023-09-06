@@ -2,7 +2,6 @@
 conducted by axomium labs
 
 
-1. modify
-2. add
-3. stage
+1. modify  -> add
+3. staged
 4. commit
