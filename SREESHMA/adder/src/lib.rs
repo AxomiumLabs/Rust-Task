@@ -27,6 +27,7 @@ struct Rectangle {
 
 impl Rectangle {
     fn can_hold(&self, other: &Rectangle) -> bool {
+        println!("function for comparing rectangles");//sho-output will print this while testing
         self.width > other.width && self.height > other.height
     }
 }
@@ -105,8 +106,9 @@ mod tests {
 
 
     #[test]   
+    #[ignore]
     fn adding() -> Result<(), String> {
-        if 2 + 9 == 4 {
+        if 2 + 2== 4 {
             Ok(())
         } else {
             Err(String::from("two plus two does not equal four"))// return an Err instead of panicking
@@ -119,4 +121,27 @@ mod tests {
 //use super::* =>We use a glob here so anything we define in the outer module is available to this tests module.
 //assert_eq! and assert_ne!  =>These macros compare two arguments for equality or inequality, respectively.
 //They’ll also print the two values if the assertion fails, which makes it easier to see why the test failed
-//
+//cargo test -- --show-output =>this will printout the println inthe functions
+
+//we can run a particular file by specifying it 
+// =>cargo test name_of_the_test      this will run the specified test 
+
+//We can specify part of a test name, and any test whose name matches that value will be run
+//eg: cargo test add => this will run adding and it_adds_two
+
+//#[ignore] we can add above of a test function to ignore that test while running
+//we can run the ingored test by this command=> cargo test --ignored
+
+
+
+//=>There are two types of tests 
+//  1.unit test   2.integration test
+//unit testmare small and focused on testing one module  , it can test private interfaces 
+//we can  put unit tests in the src directory in each file with the code that they’re testing
+//The convention is to create a module named tests in each file to contain the test functions and to annotate the module with cfg(test)
+
+//we add #[cfg(test)] annotation for test nodule
+//this will tellls the compiler that run the tst code only while running cargo test
+//we can test private functions also 
+//by putting use super::*; in test module ,, using this test will get access to all the functionsc (include prvt functions)
+ 
